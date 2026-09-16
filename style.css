@@ -1,0 +1,1043 @@
+/* =========================================================
+   SGOP - STYLE V1
+   Software de Gerenciamento Otimizado de Posições
+   ========================================================= */
+
+
+/* =========================================================
+   1. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+
+    --azul-escuro: #0b1f33;
+
+    --azul: #1261a0;
+
+    --azul-claro: #1f82c4;
+
+    --azul-suave: #eaf4fb;
+
+    --verde: #18a66a;
+
+    --verde-suave: #e8f7f0;
+
+    --amarelo: #e6a700;
+
+    --amarelo-suave: #fff6d9;
+
+    --vermelho: #d64545;
+
+    --vermelho-suave: #fdeaea;
+
+    --branco: #ffffff;
+
+    --cinza-50: #f7f9fb;
+
+    --cinza-100: #eef2f5;
+
+    --cinza-200: #dce3e9;
+
+    --cinza-400: #8a98a6;
+
+    --cinza-600: #53616e;
+
+    --cinza-800: #263440;
+
+    --sombra: 0 4px 16px rgba(11, 31, 51, 0.08);
+
+    --sombra-hover: 0 8px 24px rgba(11, 31, 51, 0.13);
+
+    --raio: 12px;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: var(--cinza-50);
+
+    color: var(--cinza-800);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   2. HEADER
+   ========================================================= */
+
+header {
+
+    background: var(--azul-escuro);
+
+    color: var(--branco);
+
+    min-height: 76px;
+
+    padding: 0 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+
+/* Marca */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    min-width: 0;
+}
+
+
+.brand h1 {
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    color: var(--branco);
+}
+
+
+.brand p {
+
+    font-size: 13px;
+
+    color: #b9c8d5;
+
+    border-left: 1px solid #486075;
+
+    padding-left: 16px;
+}
+
+
+/* =========================================================
+   3. NAVEGAÇÃO
+   ========================================================= */
+
+nav ul {
+
+    list-style: none;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+nav a {
+
+    display: block;
+
+    padding: 10px 14px;
+
+    color: #dbe6ef;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+nav a:hover {
+
+    background-color: rgba(255, 255, 255, 0.10);
+
+    color: var(--branco);
+}
+
+
+nav li:first-child a {
+
+    background-color: var(--azul);
+
+    color: var(--branco);
+}
+
+
+/* =========================================================
+   4. CONTEÚDO
+   ========================================================= */
+
+main {
+
+    width: min(1400px, calc(100% - 80px));
+
+    margin: 0 auto;
+
+    padding: 40px 0 60px;
+}
+
+
+section {
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   5. TÍTULOS
+   ========================================================= */
+
+section > h2 {
+
+    color: var(--azul-escuro);
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+
+section > p {
+
+    color: var(--cinza-600);
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   6. VISÃO GERAL
+   ========================================================= */
+
+.overview {
+
+    margin-bottom: 32px;
+}
+
+
+.overview h2 {
+
+    font-size: 28px;
+}
+
+
+.overview h2::before {
+
+    content: "";
+
+    display: inline-block;
+
+    width: 5px;
+
+    height: 27px;
+
+    background: var(--azul);
+
+    border-radius: 5px;
+
+    margin-right: 12px;
+
+    vertical-align: -4px;
+}
+
+
+/* =========================================================
+   7. CARDS
+   ========================================================= */
+
+.summary-cards {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.summary-card {
+
+    background: var(--branco);
+
+    border: 1px solid var(--cinza-200);
+
+    border-radius: var(--raio);
+
+    padding: 22px;
+
+    box-shadow: var(--sombra);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.summary-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: var(--sombra-hover);
+}
+
+
+.summary-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 4px;
+
+    background: var(--azul);
+}
+
+
+.summary-card h3 {
+
+    color: var(--cinza-600);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+
+.summary-card p {
+
+    color: var(--azul-escuro);
+
+    font-size: 30px;
+
+    font-weight: 800;
+}
+
+
+.products-card::before {
+    background: var(--azul);
+}
+
+
+.positions-card::before {
+    background: var(--azul-claro);
+}
+
+
+.occupied-card::before {
+    background: var(--amarelo);
+}
+
+
+.available-card::before {
+    background: var(--verde);
+}
+
+
+/* =========================================================
+   8. OCUPAÇÃO
+   ========================================================= */
+
+.occupancy-container {
+
+    background: var(--branco);
+
+    border: 1px solid var(--cinza-200);
+
+    border-radius: var(--raio);
+
+    padding: 24px;
+
+    box-shadow: var(--sombra);
+}
+
+
+.occupancy-container p {
+
+    color: var(--cinza-800);
+
+    font-size: 15px;
+
+    margin-bottom: 14px;
+}
+
+
+.occupancy-container strong {
+
+    color: var(--azul);
+
+    font-size: 24px;
+}
+
+
+progress {
+
+    width: 100%;
+
+    height: 13px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+}
+
+
+progress::-webkit-progress-bar {
+
+    background-color: var(--cinza-100);
+
+    border-radius: 20px;
+}
+
+
+progress::-webkit-progress-value {
+
+    background: linear-gradient(
+        90deg,
+        var(--azul),
+        var(--azul-claro)
+    );
+
+    border-radius: 20px;
+}
+
+
+progress::-moz-progress-bar {
+
+    background: var(--azul);
+
+    border-radius: 20px;
+}
+
+
+/* =========================================================
+   9. STATUS
+   ========================================================= */
+
+.position-status {
+
+    background: var(--branco);
+
+    border: 1px solid var(--cinza-200);
+
+    border-radius: var(--raio);
+
+    padding: 24px;
+
+    box-shadow: var(--sombra);
+}
+
+
+.position-status h2 {
+
+    margin-bottom: 18px;
+}
+
+
+.position-status ul {
+
+    list-style: none;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+
+.position-status li {
+
+    padding: 14px 16px;
+
+    background: var(--cinza-50);
+
+    border-radius: 9px;
+
+    color: var(--cinza-600);
+
+    font-size: 14px;
+
+    border: 1px solid var(--cinza-200);
+
+    border-left: 4px solid var(--azul);
+}
+
+
+.position-status li span {
+
+    display: block;
+}
+
+
+.position-status li strong {
+
+    display: block;
+
+    color: var(--azul-escuro);
+
+    font-size: 22px;
+
+    margin-top: 3px;
+}
+
+
+.status-available {
+
+    border-left-color: var(--verde) !important;
+}
+
+
+.status-occupied {
+
+    border-left-color: var(--azul) !important;
+}
+
+
+.status-reserved {
+
+    border-left-color: var(--amarelo) !important;
+}
+
+
+.status-problem {
+
+    border-left-color: var(--vermelho) !important;
+}
+
+
+/* =========================================================
+   10. MAPA DO ESTOQUE
+   ========================================================= */
+
+.warehouse-map {
+
+    margin-top: 35px;
+}
+
+
+.map-container {
+
+    background: var(--branco);
+
+    border: 1px solid var(--cinza-200);
+
+    border-radius: var(--raio);
+
+    padding: 24px;
+
+    box-shadow: var(--sombra);
+
+    overflow-x: auto;
+}
+
+
+.warehouse-map table {
+
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 8px;
+
+    box-shadow: none;
+
+    border: none;
+}
+
+
+.warehouse-map th {
+
+    background: transparent;
+
+    color: var(--cinza-600);
+
+    text-align: center;
+
+    padding: 8px;
+}
+
+
+.warehouse-map td {
+
+    text-align: center;
+
+    padding: 22px 10px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    border: 1px solid transparent;
+}
+
+
+.warehouse-map td.occupied {
+
+    background: var(--azul-suave);
+
+    color: var(--azul);
+
+    border-color: #cce4f5;
+}
+
+
+.warehouse-map td.available {
+
+    background: var(--verde-suave);
+
+    color: var(--verde);
+
+    border-color: #bde8d4;
+}
+
+
+/* =========================================================
+   11. TABELAS
+   ========================================================= */
+
+.movements table {
+
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    background: var(--branco);
+
+    border: 1px solid var(--cinza-200);
+
+    border-radius: var(--raio);
+
+    overflow: hidden;
+
+    box-shadow: var(--sombra);
+}
+
+
+.movements thead {
+
+    background: var(--azul-escuro);
+
+    color: var(--branco);
+}
+
+
+.movements th {
+
+    padding: 14px 16px;
+
+    text-align: left;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+}
+
+
+.movements td {
+
+    padding: 14px 16px;
+
+    font-size: 14px;
+
+    color: var(--cinza-600);
+
+    border-top: 1px solid var(--cinza-100);
+}
+
+
+.movements tbody tr {
+
+    transition: background-color 0.15s ease;
+}
+
+
+.movements tbody tr:hover {
+
+    background-color: var(--azul-suave);
+}
+
+
+.movements td:first-child {
+
+    color: var(--azul);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   12. ALERTAS
+   ========================================================= */
+
+.alerts {
+
+    background: var(--branco);
+
+    border: 1px solid var(--cinza-200);
+
+    border-radius: var(--raio);
+
+    padding: 24px;
+
+    box-shadow: var(--sombra);
+}
+
+
+.alerts ul {
+
+    list-style: none;
+
+    display: grid;
+
+    gap: 10px;
+}
+
+
+.alerts li {
+
+    padding: 13px 16px;
+
+    background: var(--amarelo-suave);
+
+    border-left: 4px solid var(--amarelo);
+
+    border-radius: 7px;
+
+    color: #745800;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   13. ACESSO RÁPIDO
+   ========================================================= */
+
+.quick-access {
+
+    background: var(--branco);
+
+    border: 1px solid var(--cinza-200);
+
+    border-radius: var(--raio);
+
+    padding: 24px;
+
+    box-shadow: var(--sombra);
+}
+
+
+.quick-access > div {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+.quick-access a {
+
+    display: inline-block;
+
+    padding: 11px 17px;
+
+    background: var(--azul);
+
+    color: var(--branco);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    border-radius: 7px;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.quick-access a:hover {
+
+    background: var(--azul-claro);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   14. FOOTER
+   ========================================================= */
+
+footer {
+
+    background: var(--azul-escuro);
+
+    color: #aebdca;
+
+    text-align: center;
+
+    padding: 30px 20px;
+
+    margin-top: 20px;
+}
+
+
+footer p:first-child {
+
+    color: var(--branco);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+
+footer p:last-child {
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   15. TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    header {
+
+        padding: 15px 25px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .brand {
+
+        width: 100%;
+    }
+
+
+    nav {
+
+        width: 100%;
+    }
+
+
+    nav ul {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        padding-bottom: 3px;
+    }
+
+
+    nav a {
+
+        white-space: nowrap;
+    }
+
+
+    main {
+
+        width: min(100% - 40px, 900px);
+    }
+
+
+    .summary-cards {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .position-status ul {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   16. CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    header {
+
+        padding: 16px 18px;
+    }
+
+
+    .brand {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 3px;
+    }
+
+
+    .brand p {
+
+        border-left: none;
+
+        padding-left: 0;
+
+        font-size: 11px;
+    }
+
+
+    nav ul {
+
+        gap: 3px;
+    }
+
+
+    nav a {
+
+        padding: 9px 10px;
+
+        font-size: 12px;
+    }
+
+
+    main {
+
+        width: calc(100% - 28px);
+
+        padding-top: 25px;
+    }
+
+
+    .overview h2 {
+
+        font-size: 23px;
+    }
+
+
+    .summary-cards {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .position-status ul {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .summary-card p {
+
+        font-size: 27px;
+    }
+
+
+    .movements table {
+
+        display: block;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
+    }
+
+
+    .movements th,
+    .movements td {
+
+        padding: 12px;
+    }
+
+
+    .quick-access a {
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+}

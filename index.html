@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SGOP - Software de Gerenciamento Otimizado de Posições</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         CABEÇALHO / NAVEGAÇÃO
+         ========================= -->
+
+    <header>
+
+        <div class="brand">
+            <h1>SGOP</h1>
+
+            <p>
+                Software de Gerenciamento Otimizado de Posições
+            </p>
+        </div>
+
+        <nav>
+            <ul>
+
+                <li>
+                    <a href="index.html">Início</a>
+                </li>
+
+                <li>
+                    <a href="cadastrar-produto.html">
+                        Cadastrar Produto
+                    </a>
+                </li>
+
+                <li>
+                    <a href="gerar-qrcode.html">
+                        Gerar QR Code
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sgop.html">
+                        SGOP
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONTEÚDO PRINCIPAL
+         ========================= -->
+
+    <main>
+
+        <!-- Visão geral -->
+
+        <section class="overview">
+
+            <h2>Visão geral do estoque</h2>
+
+            <p>
+                Acompanhe a situação atual do estoque,
+                a ocupação das posições e a disponibilidade
+                de armazenamento.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             RESUMO DO ESTOQUE
+             ========================= -->
+
+        <section class="stock-summary">
+
+            <h2>Resumo do estoque</h2>
+
+            <div class="summary-cards">
+
+                <article class="summary-card products-card">
+
+                    <h3>Produtos cadastrados</h3>
+
+                    <p>1.248</p>
+
+                </article>
+
+
+                <article class="summary-card positions-card">
+
+                    <h3>Posições totais</h3>
+
+                    <p>3.200</p>
+
+                </article>
+
+
+                <article class="summary-card occupied-card">
+
+                    <h3>Posições ocupadas</h3>
+
+                    <p>2.475</p>
+
+                </article>
+
+
+                <article class="summary-card available-card">
+
+                    <h3>Posições disponíveis</h3>
+
+                    <p>725</p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OCUPAÇÃO DO ESTOQUE
+             ========================= -->
+
+        <section class="occupancy">
+
+            <h2>Ocupação do estoque</h2>
+
+            <div class="occupancy-container">
+
+                <p>
+                    <strong>77,3%</strong>
+                    das posições estão ocupadas.
+                </p>
+
+                <progress value="77.3" max="100">
+                    77,3%
+                </progress>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STATUS DAS POSIÇÕES
+             ========================= -->
+
+        <section class="position-status">
+
+            <h2>Status das posições</h2>
+
+            <ul>
+
+                <li class="status-available">
+
+                    <span>Disponíveis</span>
+
+                    <strong>725</strong>
+
+                </li>
+
+
+                <li class="status-occupied">
+
+                    <span>Ocupadas</span>
+
+                    <strong>2.475</strong>
+
+                </li>
+
+
+                <li class="status-reserved">
+
+                    <span>Reservadas</span>
+
+                    <strong>120</strong>
+
+                </li>
+
+
+                <li class="status-problem">
+
+                    <span>Com problema</span>
+
+                    <strong>15</strong>
+
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             MAPA DO ESTOQUE
+             ========================= -->
+
+        <section class="warehouse-map">
+
+            <h2>Mapa geral do estoque</h2>
+
+            <p>
+                Visualização simplificada das posições
+                atualmente disponíveis e ocupadas.
+            </p>
+
+            <div class="map-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                            <th>D</th>
+                            <th>E</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td class="occupied">Ocupada</td>
+                            <td class="occupied">Ocupada</td>
+                            <td class="available">Disponível</td>
+                            <td class="occupied">Ocupada</td>
+                            <td class="occupied">Ocupada</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td class="occupied">Ocupada</td>
+                            <td class="available">Disponível</td>
+                            <td class="occupied">Ocupada</td>
+                            <td class="occupied">Ocupada</td>
+                            <td class="available">Disponível</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td class="occupied">Ocupada</td>
+                            <td class="occupied">Ocupada</td>
+                            <td class="occupied">Ocupada</td>
+                            <td class="available">Disponível</td>
+                            <td class="occupied">Ocupada</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td class="available">Disponível</td>
+                            <td class="occupied">Ocupada</td>
+                            <td class="occupied">Ocupada</td>
+                            <td class="occupied">Ocupada</td>
+                            <td class="occupied">Ocupada</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ÚLTIMAS MOVIMENTAÇÕES
+             ========================= -->
+
+        <section class="movements">
+
+            <h2>Últimas movimentações</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Produto</th>
+                        <th>Movimentação</th>
+                        <th>Origem</th>
+                        <th>Destino</th>
+                        <th>Data</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>JKT-0001</td>
+                        <td>Entrada</td>
+                        <td>Recebimento</td>
+                        <td>A-01-05</td>
+                        <td>16/09/2026</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>JKT-0002</td>
+                        <td>Transferência</td>
+                        <td>A-02-03</td>
+                        <td>B-01-04</td>
+                        <td>16/09/2026</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>JKT-0003</td>
+                        <td>Saída</td>
+                        <td>C-03-02</td>
+                        <td>Produção</td>
+                        <td>16/09/2026</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             ALERTAS
+             ========================= -->
+
+        <section class="alerts">
+
+            <h2>Alertas</h2>
+
+            <ul>
+
+                <li>
+                    Existem posições disponíveis para armazenamento.
+                </li>
+
+                <li>
+                    Existem produtos com estoque próximo do limite.
+                </li>
+
+                <li>
+                    Existem posições que precisam ser verificadas.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             ACESSO RÁPIDO
+             ========================= -->
+
+        <section class="quick-access">
+
+            <h2>Acesso rápido</h2>
+
+            <div>
+
+                <a href="cadastrar-produto.html">
+                    Cadastrar novo produto
+                </a>
+
+                <a href="gerar-qrcode.html">
+                    Gerar QR Code
+                </a>
+
+                <a href="sgop.html">
+                    Acessar SGOP
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+         ========================= -->
+
+    <footer>
+
+        <p>
+            SGOP — Software de Gerenciamento Otimizado de Posições
+        </p>
+
+        <p>
+            Projeto de otimização e monitoramento de estoque
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
