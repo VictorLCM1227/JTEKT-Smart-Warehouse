@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SGOP - Otimização de Posições</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         CABEÇALHO
+         ========================= -->
+
+    <header>
+
+        <div class="brand">
+
+            <h1>SGOP</h1>
+
+            <p>
+                Software de Gerenciamento Otimizado de Posições
+            </p>
+
+        </div>
+
+
+        <nav>
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Início
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cadastrar-produto.html">
+                        Cadastrar Produto
+                    </a>
+                </li>
+
+                <li>
+                    <a href="gerar-qrcode.html">
+                        Gerar QR Code
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sgop.html">
+                        SGOP
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONTEÚDO
+         ========================= -->
+
+    <main>
+
+
+        <!-- =========================
+             TÍTULO
+             ========================= -->
+
+        <section class="overview">
+
+            <h2>
+                Otimização de posições
+            </h2>
+
+            <p>
+                Consulte uma posição recomendada para
+                armazenar um produto com base nas
+                características do estoque.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             CONSULTA
+             ========================= -->
+
+        <section class="sgop-panel">
+
+            <div class="sgop-panel-header">
+
+                <h2>
+                    Nova movimentação
+                </h2>
+
+                <p>
+                    Informe o produto que será armazenado.
+                    O SGOP analisará as posições disponíveis.
+                </p>
+
+            </div>
+
+
+            <div class="sgop-form">
+
+
+                <div class="form-field">
+
+                    <label for="produto">
+
+                        Código do produto
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="produto"
+                        placeholder="Ex.: JKT-0001"
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="quantidade">
+
+                        Quantidade
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantidade"
+                        min="1"
+                        placeholder="Ex.: 100"
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="giro">
+
+                        Giro do estoque
+
+                    </label>
+
+                    <select id="giro">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="alto">
+                            Alto
+                        </option>
+
+                        <option value="medio">
+                            Médio
+                        </option>
+
+                        <option value="baixo">
+                            Baixo
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    onclick="otimizarPosicao()"
+                >
+
+                    Encontrar posição
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RESULTADO
+             ========================= -->
+
+        <section
+            id="resultado"
+            class="recommendation"
+        >
+
+            <div class="recommendation-header">
+
+                <div>
+
+                    <span class="recommendation-label">
+
+                        POSIÇÃO RECOMENDADA
+
+                    </span>
+
+                    <h2 id="posicaoResultado">
+
+                        A-01-05
+
+                    </h2>
+
+                </div>
+
+
+                <span class="recommendation-status">
+
+                    Disponível
+
+                </span>
+
+            </div>
+
+
+            <div class="recommendation-content">
+
+
+                <div class="recommendation-info">
+
+                    <h3>
+                        Análise da posição
+                    </h3>
+
+                    <p id="mensagemResultado">
+
+                        A posição foi selecionada considerando
+                        disponibilidade e características do produto.
+
+                    </p>
+
+
+                    <div class="criteria">
+
+
+                        <div class="criteria-item">
+
+                            <span>
+                                Disponibilidade
+                            </span>
+
+                            <strong>
+                                Adequada
+                            </strong>
+
+                        </div>
+
+
+                        <div class="criteria-item">
+
+                            <span>
+                                Capacidade
+                            </span>
+
+                            <strong>
+                                Compatível
+                            </strong>
+
+                        </div>
+
+
+                        <div class="criteria-item">
+
+                            <span>
+                                Setor
+                            </span>
+
+                            <strong>
+                                A
+                            </strong>
+
+                        </div>
+
+
+                        <div class="criteria-item">
+
+                            <span>
+                                Distância
+                            </span>
+
+                            <strong>
+                                Otimizada
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     POSIÇÃO
+                     ========================= -->
+
+                <div class="position-highlight">
+
+                    <span>
+                        Posição
+                    </span>
+
+                    <strong id="posicaoGrande">
+
+                        A-01-05
+
+                    </strong>
+
+                    <small>
+
+                        Setor A
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="recommendation-actions">
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    onclick="confirmarPosicao()"
+                >
+
+                    Confirmar posição
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    onclick="novaAnalise()"
+                >
+
+                    Nova análise
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="confirmacao"
+                class="confirmation-message"
+            >
+
+                Posição registrada com sucesso.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MAPA
+             ========================= -->
+
+        <section class="sgop-map-section">
+
+            <h2>
+                Mapa do estoque
+            </h2>
+
+            <p>
+                Visualização simplificada das posições
+                disponíveis e ocupadas.
+            </p>
+
+
+            <div class="sgop-map">
+
+
+                <div class="map-legend">
+
+                    <div>
+
+                        <span class="legend-box available"></span>
+
+                        Disponível
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="legend-box occupied"></span>
+
+                        Ocupada
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="legend-box recommended"></span>
+
+                        Recomendada
+
+                    </div>
+
+                </div>
+
+
+                <div class="warehouse-grid">
+
+
+                    <!-- Linha 1 -->
+
+                    <div class="warehouse-position occupied">
+                        A-01-01
+                    </div>
+
+                    <div class="warehouse-position occupied">
+                        A-01-02
+                    </div>
+
+                    <div
+                        id="map-A-01-03"
+                        class="warehouse-position available"
+                    >
+                        A-01-03
+                    </div>
+
+                    <div class="warehouse-position occupied">
+                        A-01-01
+                    </div>
+
+                    <div
+                        id="map-A-01-05"
+                        class="warehouse-position recommended"
+                    >
+                        A-01-05
+                    </div>
+
+
+                    <!-- Linha 2 -->
+
+                    <div class="warehouse-position occupied">
+                        A-02-01
+                    </div>
+
+                    <div
+                        id="map-A-02-02"
+                        class="warehouse-position available"
+                    >
+                        A-02-02
+                    </div>
+
+                    <div class="warehouse-position occupied">
+                        A-02-03
+                    </div>
+
+                    <div
+                        id="map-A-02-04"
+                        class="warehouse-position available"
+                    >
+                        A-02-04
+                    </div>
+
+                    <div class="warehouse-position occupied">
+                        A-02-05
+                    </div>
+
+
+                    <!-- Linha 3 -->
+
+                    <div
+                        id="map-B-01-01"
+                        class="warehouse-position available"
+                    >
+                        B-01-01
+                    </div>
+
+                    <div class="warehouse-position occupied">
+                        B-01-02
+                    </div>
+
+                    <div class="warehouse-position occupied">
+                        B-01-03
+                    </div>
+
+                    <div
+                        id="map-B-01-04"
+                        class="warehouse-position available"
+                    >
+                        B-01-04
+                    </div>
+
+                    <div class="warehouse-position occupied">
+                        B-01-05
+                    </div>
+
+
+                    <!-- Linha 4 -->
+
+                    <div class="warehouse-position occupied">
+                        C-01-01
+                    </div>
+
+                    <div
+                        id="map-C-01-02"
+                        class="warehouse-position available"
+                    >
+                        C-01-02
+                    </div>
+
+                    <div class="warehouse-position occupied">
+                        C-01-03
+                    </div>
+
+                    <div class="warehouse-position occupied">
+                        C-01-04
+                    </div>
+
+                    <div
+                        id="map-C-01-05"
+                        class="warehouse-position available"
+                    >
+                        C-01-05
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CRITÉRIOS
+             ========================= -->
+
+        <section class="optimization-section">
+
+            <h2>
+                Critérios considerados
+            </h2>
+
+            <p>
+                O SGOP utiliza diferentes informações
+                para determinar a posição mais adequada.
+            </p>
+
+
+            <div class="optimization-cards">
+
+
+                <article>
+
+                    <span class="optimization-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Disponibilidade
+                    </h3>
+
+                    <p>
+                        Verifica quais posições estão
+                        disponíveis para armazenamento.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span class="optimization-number">
+                        02
+                    </span>
+
+                    <h3>
+                        Capacidade
+                    </h3>
+
+                    <p>
+                        Compara as características do produto
+                        com a capacidade da posição.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span class="optimization-number">
+                        03
+                    </span>
+
+                    <h3>
+                        Giro
+                    </h3>
+
+                    <p>
+                        Considera a frequência de movimentação
+                        do produto.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span class="optimization-number">
+                        04
+                    </span>
+
+                    <h3>
+                        Distância
+                    </h3>
+
+                    <p>
+                        Busca reduzir deslocamentos
+                        desnecessários dentro do estoque.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+         ========================= -->
+
+    <footer>
+
+        <p>
+            SGOP — Software de Gerenciamento Otimizado de Posições
+        </p>
+
+        <p>
+            Projeto de otimização e monitoramento de estoque
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+        let posicaoSelecionada = "A-01-05";
+
+
+        function otimizarPosicao() {
+
+            const produto =
+                document.getElementById("produto").value.trim();
+
+            const quantidade =
+                document.getElementById("quantidade").value;
+
+            const giro =
+                document.getElementById("giro").value;
+
+
+            if (!produto) {
+
+                alert("Informe o código do produto.");
+
+                return;
+
+            }
+
+
+            if (!quantidade || quantidade <= 0) {
+
+                alert("Informe uma quantidade válida.");
+
+                return;
+
+            }
+
+
+            if (!giro) {
+
+                alert("Selecione o giro do estoque.");
+
+                return;
+
+            }
+
+
+            /*
+             * Simulação do algoritmo de otimização.
+             *
+             * Em uma versão real, esses dados seriam
+             * consultados no banco de dados.
+             */
+
+            const posicoes = [
+
+                {
+                    codigo: "A-01-05",
+                    setor: "A",
+                    distancia: "Otimizada"
+                },
+
+                {
+                    codigo: "A-02-02",
+                    setor: "A",
+                    distancia: "Baixa"
+                },
+
+                {
+                    codigo: "A-02-04",
+                    setor: "A",
+                    distancia: "Média"
+                },
+
+                {
+                    codigo: "B-01-01",
+                    setor: "B",
+                    distancia: "Média"
+                },
+
+                {
+                    codigo: "B-01-04",
+                    setor: "B",
+                    distancia: "Alta"
+                },
+
+                {
+                    codigo: "C-01-02",
+                    setor: "C",
+                    distancia: "Alta"
+                },
+
+                {
+                    codigo: "C-01-05",
+                    setor: "C",
+                    distancia: "Alta"
+                }
+
+            ];
+
+
+            /*
+             * Simulação da escolha.
+             */
+
+            let resultado;
+
+
+            if (giro === "alto") {
+
+                resultado = posicoes[0];
+
+            }
+            else if (giro === "medio") {
+
+                resultado = posicoes[1];
+
+            }
+            else {
+
+                resultado = posicoes[2];
+
+            }
+
+
+            posicaoSelecionada =
+                resultado.codigo;
+
+
+            /*
+             * Atualiza resultado.
+             */
+
+            document.getElementById(
+                "posicaoResultado"
+            ).textContent =
+                resultado.codigo;
+
+
+            document.getElementById(
+                "posicaoGrande"
+            ).textContent =
+                resultado.codigo;
+
+
+            document.getElementById(
+                "mensagemResultado"
+            ).textContent =
+
+                `A posição ${resultado.codigo} foi selecionada
+                 considerando disponibilidade, setor, giro
+                 do produto e distância dentro do estoque.`;
+
+
+            /*
+             * Atualiza informações.
+             */
+
+            const criterios =
+                document.querySelectorAll(
+                    ".criteria-item strong"
+                );
+
+
+            criterios[0].textContent =
+                "Adequada";
+
+            criterios[1].textContent =
+                "Compatível";
+
+            criterios[2].textContent =
+                "Setor " + resultado.setor;
+
+            criterios[3].textContent =
+                resultado.distancia;
+
+
+            /*
+             * Atualiza mapa.
+             */
+
+            limparMapa();
+
+
+            const elementoMapa =
+                document.getElementById(
+                    "map-" + resultado.codigo
+                );
+
+
+            if (elementoMapa) {
+
+                elementoMapa.classList.remove(
+                    "available"
+                );
+
+                elementoMapa.classList.add(
+                    "recommended"
+                );
+
+            }
+
+
+            /*
+             * Mostra resultado.
+             */
+
+            document.getElementById(
+                "resultado"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "resultado"
+            ).scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+
+        function limparMapa() {
+
+            const recomendados =
+                document.querySelectorAll(
+                    ".warehouse-position.recommended"
+                );
+
+
+            recomendados.forEach(function(posicao) {
+
+                posicao.classList.remove(
+                    "recommended"
+                );
+
+                posicao.classList.add(
+                    "available"
+                );
+
+            });
+
+        }
+
+
+        function confirmarPosicao() {
+
+            document.getElementById(
+                "confirmacao"
+            ).style.display = "block";
+
+
+            setTimeout(function() {
+
+                document.getElementById(
+                    "confirmacao"
+                ).style.display = "none";
+
+            }, 4000);
+
+        }
+
+
+        function novaAnalise() {
+
+            document.getElementById(
+                "produto"
+            ).value = "";
+
+
+            document.getElementById(
+                "quantidade"
+            ).value = "";
+
+
+            document.getElementById(
+                "giro"
+            ).value = "";
+
+
+            document.getElementById(
+                "resultado"
+            ).style.display = "none";
+
+
+            limparMapa();
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

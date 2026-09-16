@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SGOP - Gerar QR Code</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         CABEÇALHO
+         ========================= -->
+
+    <header>
+
+        <div class="brand">
+
+            <h1>SGOP</h1>
+
+            <p>
+                Software de Gerenciamento Otimizado de Posições
+            </p>
+
+        </div>
+
+
+        <nav>
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Início
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cadastrar-produto.html">
+                        Cadastrar Produto
+                    </a>
+                </li>
+
+                <li>
+                    <a href="gerar-qrcode.html">
+                        Gerar QR Code
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sgop.html">
+                        SGOP
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONTEÚDO PRINCIPAL
+         ========================= -->
+
+    <main>
+
+
+        <!-- TÍTULO -->
+
+        <section class="overview">
+
+            <h2>Gerar QR Code</h2>
+
+            <p>
+                Gere um QR Code para identificar produtos
+                e posições dentro do estoque.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             GERADOR
+             ========================= -->
+
+        <section class="qr-section">
+
+
+            <div class="qr-layout">
+
+
+                <!-- =========================
+                     FORMULÁRIO
+                     ========================= -->
+
+                <div class="qr-form">
+
+                    <h3>
+                        Dados do QR Code
+                    </h3>
+
+                    <p>
+                        Informe os dados que serão associados
+                        ao código de identificação.
+                    </p>
+
+
+                    <div class="form-field">
+
+                        <label for="codigoProduto">
+                            Código do produto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="codigoProduto"
+                            placeholder="Ex.: JKT-0001"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="nomeProduto">
+                            Nome do produto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeProduto"
+                            placeholder="Ex.: Engrenagem"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="posicaoProduto">
+                            Posição no estoque
+                        </label>
+
+                        <input
+                            type="text"
+                            id="posicaoProduto"
+                            placeholder="Ex.: A-01-05"
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="setorProduto">
+                            Setor
+                        </label>
+
+                        <select id="setorProduto">
+
+                            <option value="">
+                                Selecione o setor
+                            </option>
+
+                            <option value="A">
+                                Setor A
+                            </option>
+
+                            <option value="B">
+                                Setor B
+                            </option>
+
+                            <option value="C">
+                                Setor C
+                            </option>
+
+                            <option value="D">
+                                Setor D
+                            </option>
+
+                            <option value="E">
+                                Setor E
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-primary qr-generate-button"
+                        onclick="gerarQRCode()"
+                    >
+                        Gerar QR Code
+                    </button>
+
+                </div>
+
+
+                <!-- =========================
+                     RESULTADO
+                     ========================= -->
+
+                <div class="qr-result">
+
+                    <h3>
+                        QR Code
+                    </h3>
+
+
+                    <div
+                        id="qrcode"
+                        class="qrcode-container"
+                    >
+
+                        <span>
+                            O QR Code aparecerá aqui
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="qrInfo"
+                        class="qr-info"
+                    >
+
+                        Preencha os dados e gere o código.
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="downloadButton"
+                        class="btn-secondary qr-download-button"
+                        onclick="baixarQRCode()"
+                        disabled
+                    >
+                        Baixar QR Code
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMO FUNCIONA
+             ========================= -->
+
+        <section class="qr-explanation">
+
+            <h2>Identificação do produto</h2>
+
+            <p>
+                O QR Code funciona como uma identificação
+                digital vinculada ao produto e à sua posição
+                no estoque.
+            </p>
+
+
+            <div class="qr-steps">
+
+
+                <article>
+
+                    <strong>01</strong>
+
+                    <h3>
+                        Identificar
+                    </h3>
+
+                    <p>
+                        O produto recebe um código único.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <strong>02</strong>
+
+                    <h3>
+                        Associar
+                    </h3>
+
+                    <p>
+                        O código é associado aos dados
+                        do produto e à posição.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <strong>03</strong>
+
+                    <h3>
+                        Monitorar
+                    </h3>
+
+                    <p>
+                        A leitura permite registrar
+                        movimentações no estoque.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+         ========================= -->
+
+    <footer>
+
+        <p>
+            SGOP — Software de Gerenciamento Otimizado de Posições
+        </p>
+
+        <p>
+            Projeto de otimização e monitoramento de estoque
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         BIBLIOTECA QR CODE
+         ========================= -->
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+        let qrCodeAtual = null;
+
+
+        function gerarQRCode() {
+
+            const codigo =
+                document.getElementById("codigoProduto").value.trim();
+
+            const nome =
+                document.getElementById("nomeProduto").value.trim();
+
+            const posicao =
+                document.getElementById("posicaoProduto").value.trim();
+
+            const setor =
+                document.getElementById("setorProduto").value;
+
+
+            /*
+             * Validação
+             */
+
+            if (!codigo) {
+
+                alert("Informe o código do produto.");
+
+                return;
+
+            }
+
+
+            if (!nome) {
+
+                alert("Informe o nome do produto.");
+
+                return;
+
+            }
+
+
+            if (!posicao) {
+
+                alert("Informe a posição do produto.");
+
+                return;
+
+            }
+
+
+            if (!setor) {
+
+                alert("Selecione o setor.");
+
+                return;
+
+            }
+
+
+            /*
+             * Conteúdo do QR Code
+             */
+
+            const conteudoQR =
+                `SGOP|PRODUTO:${codigo}|NOME:${nome}|SETOR:${setor}|POSICAO:${posicao}`;
+
+
+            /*
+             * Limpa QR anterior
+             */
+
+            const container =
+                document.getElementById("qrcode");
+
+            container.innerHTML = "";
+
+
+            /*
+             * Gera novo QR Code
+             */
+
+            qrCodeAtual = new QRCode(
+                container,
+                {
+                    text: conteudoQR,
+                    width: 220,
+                    height: 220,
+                    colorDark: "#0b1f33",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                }
+            );
+
+
+            /*
+             * Atualiza informações
+             */
+
+            document.getElementById("qrInfo").innerHTML = `
+
+                <strong>${codigo}</strong>
+
+                <span>${nome}</span>
+
+                <span>
+                    Setor ${setor} — ${posicao}
+                </span>
+
+            `;
+
+
+            /*
+             * Libera botão de download
+             */
+
+            document.getElementById(
+                "downloadButton"
+            ).disabled = false;
+
+        }
+
+
+        function baixarQRCode() {
+
+            const imagem =
+                document.querySelector("#qrcode img");
+
+
+            if (!imagem) {
+
+                alert("Gere um QR Code primeiro.");
+
+                return;
+
+            }
+
+
+            const link =
+                document.createElement("a");
+
+
+            link.href = imagem.src;
+
+            link.download =
+                "SGOP-" +
+                document.getElementById(
+                    "codigoProduto"
+                ).value +
+                ".png";
+
+
+            link.click();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

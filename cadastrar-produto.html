@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SGOP - Cadastrar Produto</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         CABEÇALHO
+         ========================= -->
+
+    <header>
+
+        <div class="brand">
+
+            <h1>SGOP</h1>
+
+            <p>
+                Software de Gerenciamento Otimizado de Posições
+            </p>
+
+        </div>
+
+
+        <nav>
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Início
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cadastrar-produto.html">
+                        Cadastrar Produto
+                    </a>
+                </li>
+
+                <li>
+                    <a href="gerar-qrcode.html">
+                        Gerar QR Code
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sgop.html">
+                        SGOP
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONTEÚDO
+         ========================= -->
+
+    <main>
+
+        <!-- Título -->
+
+        <section class="overview">
+
+            <h2>Cadastrar produto</h2>
+
+            <p>
+                Cadastre as informações do material para
+                realizar o controle de estoque e localização.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FORMULÁRIO
+             ========================= -->
+
+        <section class="product-form-section">
+
+            <form id="productForm" class="product-form">
+
+
+                <!-- =========================
+                     IDENTIFICAÇÃO
+                     ========================= -->
+
+                <div class="form-group">
+
+                    <h3>Identificação do produto</h3>
+
+                    <p>
+                        Informações utilizadas para identificar
+                        o material dentro do estoque.
+                    </p>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-field">
+
+                            <label for="codigo">
+                                Código do produto
+                            </label>
+
+                            <input
+                                type="text"
+                                id="codigo"
+                                name="codigo"
+                                placeholder="Ex.: JKT-0001"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="nome">
+                                Nome do produto
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Nome ou descrição do material"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="categoria">
+                                Categoria
+                            </label>
+
+                            <select
+                                id="categoria"
+                                name="categoria"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecione uma categoria
+                                </option>
+
+                                <option value="componente">
+                                    Componente
+                                </option>
+
+                                <option value="materia-prima">
+                                    Matéria-prima
+                                </option>
+
+                                <option value="embalagem">
+                                    Embalagem
+                                </option>
+
+                                <option value="outros">
+                                    Outros
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="origem">
+                                Origem do material
+                            </label>
+
+                            <select
+                                id="origem"
+                                name="origem"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecione a origem
+                                </option>
+
+                                <option value="nacional">
+                                    Nacional
+                                </option>
+
+                                <option value="importado">
+                                    Importado
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ESTOQUE
+                     ========================= -->
+
+                <div class="form-group">
+
+                    <h3>Informações de estoque</h3>
+
+                    <p>
+                        Dados utilizados para acompanhar a
+                        disponibilidade do material.
+                    </p>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-field">
+
+                            <label for="quantidade">
+                                Quantidade atual
+                            </label>
+
+                            <input
+                                type="number"
+                                id="quantidade"
+                                name="quantidade"
+                                min="0"
+                                placeholder="Ex.: 250"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="estoque-minimo">
+                                Estoque mínimo
+                            </label>
+
+                            <input
+                                type="number"
+                                id="estoque-minimo"
+                                name="estoque-minimo"
+                                min="0"
+                                placeholder="Ex.: 50"
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="unidade">
+                                Unidade de medida
+                            </label>
+
+                            <select
+                                id="unidade"
+                                name="unidade"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecione
+                                </option>
+
+                                <option value="un">
+                                    Unidade
+                                </option>
+
+                                <option value="caixa">
+                                    Caixa
+                                </option>
+
+                                <option value="pallet">
+                                    Pallet
+                                </option>
+
+                                <option value="kg">
+                                    Quilograma
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="giro">
+                                Giro do estoque
+                            </label>
+
+                            <select
+                                id="giro"
+                                name="giro"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecione
+                                </option>
+
+                                <option value="alto">
+                                    Alto
+                                </option>
+
+                                <option value="medio">
+                                    Médio
+                                </option>
+
+                                <option value="baixo">
+                                    Baixo
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     CARACTERÍSTICAS FÍSICAS
+                     ========================= -->
+
+                <div class="form-group">
+
+                    <h3>Características físicas</h3>
+
+                    <p>
+                        Informações utilizadas para verificar
+                        a compatibilidade com as posições.
+                    </p>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-field">
+
+                            <label for="comprimento">
+                                Comprimento (cm)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="comprimento"
+                                name="comprimento"
+                                min="0"
+                                step="0.1"
+                                placeholder="Ex.: 120"
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="largura">
+                                Largura (cm)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="largura"
+                                name="largura"
+                                min="0"
+                                step="0.1"
+                                placeholder="Ex.: 80"
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="altura">
+                                Altura (cm)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="altura"
+                                name="altura"
+                                min="0"
+                                step="0.1"
+                                placeholder="Ex.: 100"
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="peso">
+                                Peso (kg)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="peso"
+                                name="peso"
+                                min="0"
+                                step="0.1"
+                                placeholder="Ex.: 350"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     LOCALIZAÇÃO
+                     ========================= -->
+
+                <div class="form-group">
+
+                    <h3>Localização</h3>
+
+                    <p>
+                        A posição poderá ser definida pelo sistema
+                        após o cadastro do produto.
+                    </p>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-field">
+
+                            <label for="setor">
+                                Setor
+                            </label>
+
+                            <select
+                                id="setor"
+                                name="setor"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecione o setor
+                                </option>
+
+                                <option value="A">
+                                    Setor A
+                                </option>
+
+                                <option value="B">
+                                    Setor B
+                                </option>
+
+                                <option value="C">
+                                    Setor C
+                                </option>
+
+                                <option value="D">
+                                    Setor D
+                                </option>
+
+                                <option value="E">
+                                    Setor E
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="posicao">
+                                Posição atual
+                            </label>
+
+                            <input
+                                type="text"
+                                id="posicao"
+                                name="posicao"
+                                placeholder="Ex.: A-01-05"
+                            >
+
+                            <small>
+                                Deixe em branco caso o sistema
+                                ainda não tenha definido a posição.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     OBSERVAÇÕES
+                     ========================= -->
+
+                <div class="form-group">
+
+                    <h3>Observações</h3>
+
+                    <div class="form-field">
+
+                        <label for="observacoes">
+                            Informações adicionais
+                        </label>
+
+                        <textarea
+                            id="observacoes"
+                            name="observacoes"
+                            rows="4"
+                            placeholder="Digite informações relevantes sobre o material..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     AÇÕES
+                     ========================= -->
+
+                <div class="form-actions">
+
+                    <a
+                        href="index.html"
+                        class="btn-secondary"
+                    >
+                        Cancelar
+                    </a>
+
+
+                    <button
+                        type="reset"
+                        class="btn-secondary"
+                    >
+                        Limpar
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary"
+                    >
+                        Cadastrar produto
+                    </button>
+
+                </div>
+
+
+                <!-- Mensagem -->
+
+                <div
+                    id="successMessage"
+                    class="success-message"
+                >
+                    Produto cadastrado com sucesso.
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+         ========================= -->
+
+    <footer>
+
+        <p>
+            SGOP — Software de Gerenciamento Otimizado de Posições
+        </p>
+
+        <p>
+            Projeto de otimização e monitoramento de estoque
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+        const form = document.getElementById("productForm");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            successMessage.style.display = "block";
+
+            form.reset();
+
+            setTimeout(function() {
+
+                successMessage.style.display = "none";
+
+            }, 4000);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
